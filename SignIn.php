@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+error_reporting(0);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +38,7 @@
             <div class="line"></div>
         </div>
 
-        <form>
+        <form action="./Db/SignUp&SIgnIn/SignIn.config.php" method="post">
             <label for="email">Email:</label>
             <div class="custome-input">
                 <input type="email" name="email" placeholder="Your Email" autocomplete="off">
@@ -42,10 +49,20 @@
                 <input type="password" name="password" placeholder="Your Password">
                 <i class='bx bx-lock-alt'></i>
             </div>
-            <button class="login">Sign In</button>
+            <button class="login" name="login">Sign In</button>
+            <div class="error_message">
+                <span>
+                    <?php
+                        if($_SESSION["SignUpError"] == 1){
+                            echo $_SESSION["SignUpError"];
+                            $_SESSION["SignUpError"] = null;
+                        }
+                    ?>
+                </span>
+            </div>
             <div class="links">
-                <a href="./index.html">Back To Home</a>
-                <a href="./SignUp.Html">Dont Have an account?</a>
+                <a href="./index.php">Back To Home</a>
+                <a href="./SignUp.php">Dont Have an account?</a>
             </div>
         </form>
 

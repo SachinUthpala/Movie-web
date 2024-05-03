@@ -1,3 +1,9 @@
+<?php
+
+require_once './Db/Db.Connection.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +32,7 @@
             <li><a href="./Upcomming.html">UpComing Movies</a></li>
             <li><a href="#newsletter">Contact Us</a></li>
         </ul>
-        <a href="./SignUp.Html" class="btn">Sign In</a>
+        <a href="./SignUp.php" class="btn">Sign In</a>
     </header>
 
     <!-- Home  -->

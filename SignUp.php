@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+error_reporting(0);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,36 +22,22 @@
 
     <div class="container">
         <h1>Sign Up Now </h1>
-        <div class="social-login">
-            <button class="google">
-                <i class='bx bxl-google'></i>
-                Use Google
-            </button>
-            <button class="google">
-                <i class='bx bxl-apple'></i>
-                Use Apple
-            </button>
-        </div>
-        <div class="divider">
-            <div class="line"></div>
-            <p>Or</p>
-            <div class="line"></div>
-        </div>
+        
 
-        <form>
+        <form method="post" action="./Db/SignUp&SIgnIn/SignUp.config.php">
             <label for="email">Email:</label>
             <div class="custome-input">
                 <input type="email" name="email" placeholder="Your Email" autocomplete="off">
                 <i class='bx bx-at'></i>
             </div>
-            <label for="password">Password:</label>
+            <label for="password">Name:</label>
             <div class="custome-input">
-                <input type="password" name="password" placeholder="Your Password">
+                <input type="text" name="username" placeholder="Your Name">
                 <i class='bx bx-lock-alt'></i>
             </div>
-            <label for="password">Re Enter Password:</label>
+            <label for="password"> Password:</label>
             <div class="custome-input">
-                <input type="password" name="Repassword" placeholder="Re Enter Password">
+                <input type="password" name="password" placeholder="Your Password">
                 <i class='bx bx-lock-alt'></i>
             </div>
             <label for="password">Phone Number:</label>
@@ -52,13 +45,26 @@
                 <input type="text" name="phone" placeholder="Your Phone Number">
                 <i class='bx bxs-phone-call' ></i>
             </div>
-            <button class="login">Sign Up</button>
+            <button class="login" name="signUp">Sign Up</button>
+            <div class="error_message">
+                <span>
+                    <?php
+                        if($_SESSION['SignUpError'] == 1){
+                            echo $_SESSION['SignUpError'];
+                            $_SESSION['SignUpError'] = null;
+                        }else{
+
+                        }
+                    ?>
+                </span>
+            </div>
             <div class="links">
                 
-                <a href="./SignIn.html">Have an account?</a>
-                <a href="./index.html">Back To Home</a>
+                <a href="./SignIn.php">Have an account?</a>
+                <a href="./index.php">Back To Home</a>
             </div>
         </form>
+        
 
     </div>
 
