@@ -16,6 +16,7 @@ if(isset($_POST['login'])){
 
         if($password == $row['userPassword']){
             $_SESSION['username'] =  $row['UserName'];
+            $_SESSION['adminAccess'] = $row['IsAdmin'];
             header("Location: ../../index.php"); 
         }else{
             $_SESSION["SignUpError"] = "Error ! Try Again. : Invallied password !";

@@ -33,6 +33,7 @@ error_reporting(0);
             <li><a href="./RelisedMovies.html">Relised Movies</a></li>
             <li><a href="./Upcomming.html">UpComing Movies</a></li>
             <li><a href="#newsletter">Contact Us</a></li>
+            <li style="<?php if( $_SESSION['adminAccess'] ==1){echo 'display:block';} ?>"><a href="./Admin/Admin.php">Admin</a></li>
         </ul>
         <a href="./SignUp.php" style="<?php if($_SESSION['username'] != null){echo "display:none;";}else{echo "display:block";} ?>" class="btn">Sign In</a>
         <img src="./img/home3.jpg" alt="" style="width:50px ;height:50px;border-radius:100%;cursor:pointer;<?php if($_SESSION['username'] != null){echo "display:block;";}else{echo "display:none";} ?>">

@@ -1,3 +1,14 @@
+<?php
+
+require_once '../Db/Db.Connection.php';
+session_start();
+
+if(!isset($_SESSION['username'])){
+    header("Location: ../index.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
