@@ -15,6 +15,7 @@ if(isset($_POST['login'])){
         $row = $result_emailCheck->fetch_ASSOC();
 
         if($password == $row['userPassword']){
+            $_SESSION['username'] =  $row['UserName'];
             header("Location: ../../index.php"); 
         }else{
             $_SESSION["SignUpError"] = "Error ! Try Again. : Invallied password !";

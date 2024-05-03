@@ -1,6 +1,8 @@
 <?php
 
 require_once './Db/Db.Connection.php';
+session_start();
+error_reporting(0);
 
 ?>
 
@@ -32,7 +34,8 @@ require_once './Db/Db.Connection.php';
             <li><a href="./Upcomming.html">UpComing Movies</a></li>
             <li><a href="#newsletter">Contact Us</a></li>
         </ul>
-        <a href="./SignUp.php" class="btn">Sign In</a>
+        <a href="./SignUp.php" style="<?php if($_SESSION['username'] != null){echo "display:none;";}else{echo "display:block";} ?>" class="btn">Sign In</a>
+        <img src="./img/home3.jpg" alt="" style="width:50px ;height:50px;border-radius:100%;cursor:pointer;<?php if($_SESSION['username'] != null){echo "display:block;";}else{echo "display:none";} ?>">
     </header>
 
     <!-- Home  -->
@@ -248,7 +251,7 @@ require_once './Db/Db.Connection.php';
             <h3>Quick Contact</h3>
             <a href="" class="gap-flex"><i class='bx bxs-phone'></i>+94 760 271 525</a>
             <a href="" class="gap-flex"><i class='bx bxs-phone-call' ></i>0712858574 | 0147258369 </a>
-            <a href="" class="gap-flex"><i class='bx bxl-gmail' ></i>MBooking@gmail.com</a>
+            <a href="" class="gap-flex"><i class='bx bxl-gmail' ></i></a>
             
         </div>
         
