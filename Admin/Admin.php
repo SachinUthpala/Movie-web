@@ -38,7 +38,7 @@ if(!isset($_SESSION['username'])){
         </ul>
         <ul class="side-menu">
             <li>
-                <a href="#" class="logout">
+                <a href="../index.php" class="logout">
                     <i class='bx bx-log-out-circle'></i>
                     Logout
                 </a>
