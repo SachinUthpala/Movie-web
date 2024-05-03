@@ -50,10 +50,14 @@ error_reporting(0);
                 <i class='bx bx-lock-alt'></i>
             </div>
             <button class="login" name="login">Sign In</button>
-            <div class="error_message">
+            <div class="error_message" style="<?php if($_SESSION["SignUpError"] != null){
+                echo "display:block";
+            } else{
+                echo "display:none";
+            } ?>">
                 <span>
                     <?php
-                        if($_SESSION["SignUpError"] == 1){
+                        if($_SESSION["SignUpError"] != null){
                             echo $_SESSION["SignUpError"];
                             $_SESSION["SignUpError"] = null;
                         }
