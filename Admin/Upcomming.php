@@ -127,7 +127,7 @@ $result = $conn->query($sqlMovie);
                                     </ul>
                                 </td>
                                 <td>
-                                <form action="../Db/RelisedMovie/DeleteMovie.php" method="post">
+                                <form action="../Db/Upcomming/Delete.php" method="post">
                                         <input type="hidden" name="mid" value="<?php echo $row['UMovieId'] ;?>">
                                         <input type="submit" value="Delete" name="deleteMovie" style="padding: 5px 10px; background-color: #EC5800;border:none;border-radius: 3px;color:#fff;">
                                     </form>
@@ -135,7 +135,7 @@ $result = $conn->query($sqlMovie);
                                 <td>
                                 <form action="./UpdateUpcomming.php" method="post">
                                         <input type="hidden" name="mid" value="<?php echo $row['UMovieId'] ;?>">
-                                        <input type="submit" value="Update" name="deleteUser" style="padding: 5px 10px; background-color: green;border:none;border-radius: 3px;color:#fff;">
+                                        <input type="submit" value="Update"  style="padding: 5px 10px; background-color: green;border:none;border-radius: 3px;color:#fff;">
                                     </form>
                                 </td>
                                 

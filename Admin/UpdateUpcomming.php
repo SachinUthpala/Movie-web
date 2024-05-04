@@ -5,7 +5,7 @@ session_start();
 $id = intval($_POST['mid']);
 $sqlMovie = "SELECT * FROM upcommingmovies WHERE UMovieId = $id";
 $result = $conn->query($sqlMovie);
-
+$row = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,11 +77,11 @@ $result = $conn->query($sqlMovie);
                 
             </div>
 
-        <main id="AddMovie"> 
+        <main id="AddMovie" style="display: block;"> 
             <div class="container">
                 <header>Add Movies</header>
 
-                <form action="../Db/Upcomming/AddMovie.php" method="post" enctype="multipart/form-data">
+                <form action="../Db/Upcomming/Update.php" method="post" >
                     <div class="form first">
                         <div class="details personal">
                             <span class="title">Primary Details</span>
@@ -89,16 +89,16 @@ $result = $conn->query($sqlMovie);
                             <div class="feilds">
                                 <div class="input-feilds">
                                     <label>Name</label>
-                                    <input type="text" value="" name="name" id="#" required>
+                                    <input type="text" name="name" id="#" required value="<?php echo $row['UMovieName']; ?>">
                                 </div>
                                 <div class="input-feilds">
                                     <label>Duration</label>
-                                    <input type="text"  name="duration" id="#" required>
+                                    <input type="text"  name="duration" id="#" required value="<?php echo $row['Duration']; ?>">
                                 </div>
 
                                 <div class="input-feilds">
                                     <label>Movie Type</label>
-                                    <select name="movie_type" required>
+                                    <select name="movie_type" required value="<?php echo $row['MovieType']; ?>">
                                         <option value="Action">Action</option>
                                         <option value="Thriller">Thriller</option>
                                         <option value="Adventure">Adventure</option>
@@ -107,27 +107,23 @@ $result = $conn->query($sqlMovie);
                                 </div>
                                 <div class="input-feilds">
                                     <label>Discription</label>
-                                    <input type="text" name="Discription" id="#" required>
+                                    <input type="text" name="Discription" id="#" required value="<?php echo $row['Discription']; ?>">
                                 </div>
                                 <div class="input-feilds">
                                     <label>Acttress01</label>
-                                    <input type="text" name="Acttress01" id="#" required>
+                                    <input type="text" name="Acttress01" id="#" required value="<?php echo $row['Acttress01']; ?>">
                                 </div>
                                 <div class="input-feilds">
                                     <label>Acttress02</label>
-                                    <input type="text" name="Acttress02" id="#" required>
+                                    <input type="text" name="Acttress02" id="#" required value="<?php echo $row['Attress02']; ?>">
                                 </div>
                                 <div class="input-feilds">
                                     <label>Acttress03</label>
-                                    <input type="text" name="Acttress03" id="#" required>
+                                    <input type="text" name="Acttress03" id="#" required value="<?php echo $row['Attress03']; ?>">
                                 </div>
-                                
-                                
                                 <div class="input-feilds">
-                                    <label>Image </label>
-                                    <input type="file" name="image" id="#" required>
+                                    <input type="text" name="id" id="#" required value="<?php echo $row['UMovieId']; ?>">
                                 </div>
-                                
                                 
                                 
                             </div>
