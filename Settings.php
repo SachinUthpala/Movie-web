@@ -1,6 +1,12 @@
 <?php
 
+require_once './Db/Db.Connection.php';
 session_start();
+error_reporting(0);
+
+$sql = "SELECT * FROM `cart`";
+
+$result = $conn -> query($sql);
 
 ?>
 
