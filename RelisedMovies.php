@@ -112,7 +112,7 @@ $relised_result = $conn->query($relisedSql);
                 </div>
                 <h3><?php echo $row['RMovieName']; ?></h3>
                 <span><?php echo $row['RMovieDuration'].' min'; ?> | <?php echo $row['RMovieTicketPrice']; ?></span>
-                <form action="#">
+                <form action="./MoreDetails.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $row['RMovieId']; ?>">
                     <button type="submit">Book Now</button>
                 </form>

@@ -1,3 +1,22 @@
+<?php
+
+
+require_once './Db/Db.Connection.php';
+session_start();
+error_reporting(0);
+
+
+$mid = intval($_POST['id']);
+
+$sql = "SELECT * FROM `relised_movies` WHERE RMovieId = $mid";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,25 +90,22 @@
     </section>
 
     <section class="movies MoreDetails">
-        <h1>Movie Name</h1>
-        <span>120 min | Action | <span style="color:#fa1216">
-            Ticket Price : Rs 2000.00</span></span>
+        <h1><?php echo $row['RMovieName']; ?></h1>
+        <span><?php echo $row['RMovieDuration'].'Min'; ?> | <?php echo $row['RMovieType']; ?> | <span style="color:#fa1216">
+            Ticket Price : <?php echo 'Rs'.$row['RMovieTicketPrice'].'.00'; ?></span></span>
         
         <div class="content">
             <div class="left">
-               <img src="./img/c1.jpg" alt="">     
+               <img src="<?php echo './'.$row['IMG']; ?>" alt="">     
             </div><div class="right">
                 <h1>Movie Discriptions</h1>
-                <p>Lorem ipsum dolor sit amet consectetur 
-                    adipisicing elit. Repellendus deleniti beatae 
-                    reiciendis provident nulla? Aperiam quasi laudantium 
-                    deserunt tempore animi?</p>
+                <p><?php echo $row['Discription']; ?></p>
                     <br>
                     <h1>Movie Attress</h1>
                     <ul>
-                        <li>🔻 Sachin</li>
-                        <li>🔻 Uthpala</li>
-                        <li>🔻 Gunasekara</li>
+                        <li>🔻 <?php echo $row['Acttress01']; ?></li>
+                        <li>🔻 <?php echo $row['Acttress02']; ?></li>
+                        <li>🔻 <?php echo $row['Acttress03']; ?></li>
                     </ul>
                     <br>
                     <h1>Book A Ticket Now</h1>
