@@ -24,13 +24,13 @@ if(isset($_POST['submit'])){
         if(in_array($fileextention,$extensions)){
             $uploadimage = '../../Asserts/Relised/'.$Imgname; // Corrected path
             move_uploaded_file($imgfiletemp,$uploadimage);
-            $pathToImg = "Asserts/UserImg/".$Imgname;
+            $pathToImg = "Asserts/Relised/".$Imgname;
             $sql1= "INSERT INTO `relised_movies`( `RMovieName`, `RMovieDuration`, `RMovieType`, `RMovieTicketPrice`, `Discription`, `Acttress01`, `Acttress02`, `Acttress03`, `IMG`) 
-            VALUES ('$name' , '$duration' , '$movie_type' , $ticketPrice , '$Discription' , '$Acttress01' , '$Acttress02' , $Acttress03')";
+            VALUES ('$name' , '$duration' , '$movie_type' , $ticketPrice , '$Discription' , '$Acttress01' , '$Acttress02' , '$Acttress03','$pathToImg')";
     
             $result = $conn->query($sql1);
 
-            header("Location: ../../Admin/UserManagement.php");
+            header("Location: ../../Admin/CurrentMovies.php");
         } else {
             // Handle error for invalid file extension
         }  
