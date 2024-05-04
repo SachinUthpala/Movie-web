@@ -37,8 +37,8 @@ $relised_result = $conn->query($relisedSql);
 
         <!-- menu  -->
         <ul class="navbar">
-            <li><a href="#home" class="home-active">Home</a></li>
-            <li><a href="./RelisedMovies.php">Relised Movies</a></li>
+            <li><a href="#home" >Home</a></li>
+            <li class="home-active"><a href="./RelisedMovies.php">Relised Movies</a></li>
             <li><a href="./Upcomming.php">UpComing Movies</a></li>
             <li><a href="#newsletter">Contact Us</a></li>
             <li style="<?php if( $_SESSION['adminAccess'] ==1){echo 'display:block';}else{echo 'display:none';} ?>"><a href="./Admin/Admin.php">Admin</a></li>

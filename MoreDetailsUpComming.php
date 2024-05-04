@@ -1,3 +1,20 @@
+<?php
+
+
+require_once './Db/Db.Connection.php';
+session_start();
+error_reporting(0);
+
+
+$mid = intval($_POST['id']);
+
+$sql = "SELECT * FROM `upcommingmovies` WHERE UMovieId = $mid";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,32 +88,29 @@
     </section>
 
     <section class="movies MoreDetails">
-        <h1>Movie Name</h1>
-        <span>120 min | Action | <span style="color:#fa1216">
+        <h1><?php echo $row['UMovieName']; ?></h1>
+        <span><?php echo $row['Duration'].' min'; ?> |<?php echo $row['MovieType']; ?> | <span style="color:#fa1216">
             Ticket Price : Rs 0.00 (Price Will Show After Relised)</span></span>
         
         <div class="content">
             <div class="left">
-               <img src="./img/c2.jpg" alt="">     
+               <img src="<?php echo './'.$row['MovieImg']; ?>" alt="">     
             </div><div class="right">
                 <h1>Movie Discriptions</h1>
-                <p>Lorem ipsum dolor sit amet consectetur 
-                    adipisicing elit. Repellendus deleniti beatae 
-                    reiciendis provident nulla? Aperiam quasi laudantium 
-                    deserunt tempore animi?</p>
+                <p><?php echo $row['Discription']; ?></p>
                     <br>
                     <h1>Movie Attress</h1>
                     <ul>
-                        <li>🔻 Sachin</li>
-                        <li>🔻 Uthpala</li>
-                        <li>🔻 Gunasekara</li>
+                        <li>🔻 <?php echo $row['Acttress01']; ?></li>
+                        <li>🔻 <?php echo $row['Attress02']; ?></li>
+                        <li>🔻 <?php echo $row['Attress03']; ?></li>
                     </ul>
                     <br>
                     <br>
                     <h1>Relised Date</h1>
                     <p>Date : 2025 - 10 -10</p>
                     <br>
-                    <h1>Book A Ticket Now</h1>
+                    <!-- <h1>Book A Ticket Now</h1> -->
                     <form action="#">
                         <input type="hidden" name="movieId" value="">
                         <input type="number" min="1" max="20" name="NumOfTicket" placeholder="Num Of Tickets" disabled>

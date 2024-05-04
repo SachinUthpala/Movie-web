@@ -1,3 +1,20 @@
+<?php
+
+
+require_once './Db/Db.Connection.php';
+session_start();
+error_reporting(0);
+
+
+//relised movies
+$relisedSql = "SELECT * FROM `upcommingmovies`";
+$relised_result = $conn->query($relisedSql);
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,15 +38,17 @@
 
         <!-- menu  -->
         <ul class="navbar">
-            <li><a href="./index.html" >Home</a></li>
-            <li><a href="./RelisedMovies.html">Relised Movies</a></li>
-            <li><a href="./Upcomming.html" class="home-active">UpComing Movies</a></li>
-            <li><a href="#newsletter">Contact Us</a></li>
+            <li><a href="./index.php" >Home</a></li>
+            <li><a href="./RelisedMovies.php">Relised Movies</a></li>
+            <li class="home-active"><a href="./Upcomming.php" class="home-active">UpComing Movies</a></li>
+            <li style="<?php if( $_SESSION['adminAccess'] ==1){echo 'display:block';}else{echo 'display:none';} ?>"><a href="./Admin/Admin.php">Admin</a></li>
         </ul>
-        <a href="#" class="btn">Sign In</a>
+        <a href="./SignUp.php" style="<?php if($_SESSION['username'] != null){echo "display:none;";}else{echo "display:block";} ?>" class="btn">Sign In</a>
+        <img src="./img/home3.jpg" alt="" style="width:50px ;height:50px;border-radius:100%;cursor:pointer;<?php if($_SESSION['username'] != null){echo "display:block;";}else{echo "display:none";} ?>">
     </header>
 
     <!-- Home  -->
+
     <section class="home swiper" id="home" style="height: 40vh;">
         <div class="swiper-wrapper">
             <div class="swiper-slide container">
@@ -81,12 +100,41 @@
           <div class="swiper-pagination"></div>
     </section>
 
-    <!-- Movies  -->
+
+
+    <!-- upcomming -->
     <div class="movies" id="movies" style="padding-top: 30px;">
-        <h2 class="heading">Opening This Week</h2>
+        <h2 class="heading">Comming Soon</h2>
         <!-- Movies container  -->
         <div class="movies-container">
             <!-- box-1  -->
+            <?php while($row = $relised_result->fetch_assoc()){ ?>
+            <div class="box">
+                <div class="box-img">
+                    <img src="<?php echo './'.$row['MovieImg']; ?>" alt="">
+                </div>
+                <h3><?php echo $row['UMovieName']; ?></h3>
+                <span><?php echo $row['Duration'].' min'; ?> | <?php echo $row['MovieType']; ?></span>
+                <form action="./MoreDetailsUpComming.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $row['UMovieId']; ?>">
+                    <button type="submit">More Details</button>
+                </form>
+            </div>
+            <?php } ?>
+
+       
+        
+          
+        </div>
+    </div>
+
+                
+    <!-- Movies  -->
+    <!-- <div class="movies" id="movies" style="padding-top: 30px;">
+        <h2 class="heading">Opening This Week</h2>
+       
+        <div class="movies-container">
+        
             <div class="box">
                 <div class="box-img">
                     <img src="./img/m1.jpg" alt="">
@@ -99,7 +147,7 @@
                     <button type="submit">More Details</button>
                 </form>
             </div>
-            <!-- box-2  -->
+       
             <div class="box">
                 <div class="box-img">
                     <img src="./img/m2.jpg" alt="">
@@ -112,8 +160,7 @@
                     <button type="submit">More Details</button>
                 </form>
             </div>
-            <!-- box-3  -->
-            <div class="box">
+    <div class="box">
                 <div class="box-img">
                     <img src="./img/m3.jpg" alt="">
                 </div>
@@ -125,7 +172,7 @@
                     <button type="submit">More Details</button>
                 </form>
             </div>
-            <!-- box-4  -->
+
             <div class="box">
                 <div class="box-img">
                     <img src="./img/m4.jpg" alt="">
@@ -137,8 +184,7 @@
                     <input type="hidden" name="id">
                     <button type="submit">More Details</button>
                 </form>
-            </div>
-            <!-- box-5  -->
+ 
             <div class="box">
                 <div class="box-img">
                     <img src="./img/m5.jpg" alt="">
@@ -151,7 +197,7 @@
                     <button type="submit">More Details</button>
                 </form>
             </div>
-            <!-- box-6  -->
+
             <div class="box">
                 <div class="box-img">
                     <img src="./img/m6.jpg" alt="">
@@ -163,7 +209,7 @@
                     <button type="submit">More Details</button>
                 </form>
             </div>
-            <!-- box-7  -->
+      
             <div class="box">
                 <div class="box-img">
                     <img src="./img/m7.jpg" alt="">
@@ -175,7 +221,7 @@
                     <button type="submit">More Details</button>
                 </form>
             </div>
-            <!-- box-8  -->
+       
             <div class="box">
                 <div class="box-img">
                     <img src="./img/m8.jpg" alt="">
@@ -187,7 +233,7 @@
                     <button type="submit">More Details</button>
                 </form>
             </div>
-            <!-- box-9  -->
+
             <div class="box">
                 <div class="box-img">
                     <img src="./img/m9.jpg" alt="">
@@ -199,7 +245,7 @@
                     <button type="submit">More Details</button>
                 </form>
             </div>
-            <!-- box-10  -->
+
             <div class="box">
                 <div class="box-img">
                     <img src="./img/m10.jpg" alt="">
@@ -212,7 +258,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- footer -->
     <section class="footer">
