@@ -46,7 +46,8 @@ $row = $result->fetch_assoc();
             <li><a href="./Upcomming.php" >UpComing Movies</a></li>
             <li><a href="#newsletter">Contact Us</a></li>
         </ul>
-        <a href="./SignIn.html" class="btn">Sign In</a>
+        <a href="./SignUp.php" style="<?php if($_SESSION['username'] != null){echo "display:none;";}else{echo "display:block";} ?>" class="btn">Sign In</a>
+        <img src="./img/home3.jpg" alt="" style="width:50px ;height:50px;border-radius:100%;cursor:pointer;<?php if($_SESSION['username'] != null){echo "display:block;";}else{echo "display:none";} ?>" onclick="location.href='Settings.php'">
     </header>
 
     <section class="home swiper" id="home" style="height: 30vh;">
@@ -109,8 +110,11 @@ $row = $result->fetch_assoc();
                     </ul>
                     <br>
                     <h1>Book A Ticket Now</h1>
-                    <form action="#">
-                        <input type="hidden" name="movieId" value="">
+                    <form action="./Db/Cart/AddToCart.php" method="post">
+                        <input type="hidden" name="movieId" value="<?php echo $mid; ?>">
+                        <input type="hidden" name="ticketPrice" value="<?php echo $row['RMovieTicketPrice']; ?>">
+                        <input type="hidden" name="userId" value="<?php echo $_SESSION['UserId'] ; ?>">
+                        <input type="hidden" name="Img" value="<?php echo $row['IMG'] ; ?>">
                         <input type="number" min="1" max="20" name="NumOfTicket" placeholder="Num Of Tickets">
                         <button type="submit">Add To Cart</button>
                     </form>
