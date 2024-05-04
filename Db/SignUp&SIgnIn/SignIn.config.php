@@ -16,6 +16,9 @@ if(isset($_POST['login'])){
 
         if($password == $row['userPassword']){
             $_SESSION['username'] =  $row['UserName'];
+            $_SESSION['userEmail'] =  $row['UserMail'];
+            $_SESSION['UserImg'] =  $row['UserImg'];
+            $_SESSION['UserId'] =  $row['UserId'];
             $_SESSION['adminAccess'] = $row['IsAdmin'];
             header("Location: ../../index.php"); 
         }else{

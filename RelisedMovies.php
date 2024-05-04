@@ -1,3 +1,19 @@
+<?php
+
+require_once './Db/Db.Connection.php';
+session_start();
+error_reporting(0);
+
+
+//relised movies
+$relisedSql = "SELECT * FROM `relised_movies`";
+$relised_result = $conn->query($relisedSql);
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,18 +31,20 @@
     <!-- Navbar  -->
     <header>
         <a href="#home" class="logo">
-            <i class='bx bxs-movie'></i>M Book
+            <i class='bx bxs-movie'></i>M Booking
         </a>
         <div class="bx bx-menu" id="menu-icon"></div>
 
         <!-- menu  -->
         <ul class="navbar">
-            <li><a href="./index.html" >Home</a></li>
-            <li><a href="./RelisedMovies.html" class="home-active">Relised Movies</a></li>
-            <li><a href="./Upcomming.html">UpComing Movies</a></li>
+            <li><a href="#home" class="home-active">Home</a></li>
+            <li><a href="./RelisedMovies.php">Relised Movies</a></li>
+            <li><a href="./Upcomming.php">UpComing Movies</a></li>
             <li><a href="#newsletter">Contact Us</a></li>
+            <li style="<?php if( $_SESSION['adminAccess'] ==1){echo 'display:block';}else{echo 'display:none';} ?>"><a href="./Admin/Admin.php">Admin</a></li>
         </ul>
-        <a href="#" class="btn">Sign In</a>
+        <a href="./SignUp.php" style="<?php if($_SESSION['username'] != null){echo "display:none;";}else{echo "display:block";} ?>" class="btn">Sign In</a>
+        <img src="./img/home3.jpg" alt="" style="width:50px ;height:50px;border-radius:100%;cursor:pointer;<?php if($_SESSION['username'] != null){echo "display:block;";}else{echo "display:none";} ?>">
     </header>
 
     <!-- Home  -->
@@ -87,125 +105,23 @@
         <!-- Movies container  -->
         <div class="movies-container">
             <!-- box-1  -->
+            <?php while($row = $relised_result->fetch_assoc()){ ?>
             <div class="box">
                 <div class="box-img">
-                    <img src="./img/m1.jpg" alt="">
+                    <img src="<?php echo './'.$row['IMG']; ?>" alt="">
                 </div>
-                <h3>Dr.Strange</h3>
-                <span>120 min | Action</span>
+                <h3><?php echo $row['RMovieName']; ?></h3>
+                <span><?php echo $row['RMovieDuration'].' min'; ?> | <?php echo $row['RMovieTicketPrice']; ?></span>
                 <form action="#">
-                    <input type="hidden" name="id">
+                    <input type="hidden" name="id" value="<?php echo $row['RMovieId']; ?>">
                     <button type="submit">Book Now</button>
                 </form>
             </div>
-            <!-- box-2  -->
-            <div class="box">
-                <div class="box-img">
-                    <img src="./img/m2.jpg" alt="">
-                </div>
-                <h3>Pathan</h3>
-                <span>120 min | Action</span>
-                <form action="#">
-                    <input type="hidden" name="id">
-                    <button type="submit">Book Now</button>
-                </form>
-            </div>
-            <!-- box-3  -->
-            <div class="box">
-                <div class="box-img">
-                    <img src="./img/m3.jpg" alt="">
-                </div>
-                <h3>Batman vs Superman</h3>
-                <span>120 min | Thriller</span>
-                <form action="#">
-                    <input type="hidden" name="id">
-                    <button type="submit">Book Now</button>
-                </form>
-            </div>
-            <!-- box-4  -->
-            <div class="box">
-                <div class="box-img">
-                    <img src="./img/m4.jpg" alt="">
-                </div>
-                <h3>John Wick 2</h3>
-                <span>120 min | Action</span>
-                <form action="#">
-                    <input type="hidden" name="id">
-                    <button type="submit">Book Now</button>
-                </form>
-            </div>
-            <!-- box-5  -->
-            <div class="box">
-                <div class="box-img">
-                    <img src="./img/m5.jpg" alt="">
-                </div>
-                <h3>Aquaman</h3>
-                <span>120 min | Adventure</span>
-                <form action="#">
-                    <input type="hidden" name="id">
-                    <button type="submit">Book Now</button>
-                </form>
-            </div>
-            <!-- box-6  -->
-            <div class="box">
-                <div class="box-img">
-                    <img src="./img/m6.jpg" alt="">
-                </div>
-                <h3>Black Panther</h3>
-                <span>120 min | Thriller</span>
-                <form action="#">
-                    <input type="hidden" name="id">
-                    <button type="submit">Book Now</button>
-                </form>
-            </div>
-            <!-- box-7  -->
-            <div class="box">
-                <div class="box-img">
-                    <img src="./img/m7.jpg" alt="">
-                </div>
-                <h3>Uncharted</h3>
-                <span>120 min | Adventure</span>
-                <form action="#">
-                    <input type="hidden" name="id">
-                    <button type="submit">Book Now</button>
-                </form>
-            </div>
-            <!-- box-8  -->
-            <div class="box">
-                <div class="box-img">
-                    <img src="./img/m8.jpg" alt="">
-                </div>
-                <h3>Brahmastra</h3>
-                <span>120 min | Action</span>
-                <form action="#">
-                    <input type="hidden" name="id">
-                    <button type="submit">Book Now</button>
-                </form>
-            </div>
-            <!-- box-9  -->
-            <div class="box">
-                <div class="box-img">
-                    <img src="./img/m9.jpg" alt="">
-                </div>
-                <h3>Mortal-Engines</h3>
-                <span>120 min | Action</span>
-                <form action="#">
-                    <input type="hidden" name="id">
-                    <button type="submit">Book Now</button>
-                </form>
-            </div>
-            <!-- box-10  -->
-            <div class="box">
-                <div class="box-img">
-                    <img src="./img/m10.jpg" alt="">
-                </div>
-                <h3>UnderWorld Blood Wars</h3>
-                <span>120 min | Action</span>
-                <form action="#">
-                    <input type="hidden" name="id">
-                    <button type="submit">Book Now</button>
-                </form>
-            </div>
+            <?php } ?>
+
+       
+        
+          
         </div>
     </div>
 

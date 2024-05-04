@@ -62,7 +62,7 @@ if(!isset($_SESSION['username'])){
             <label for="theme-toggle" class="theme-toggle"></label>
             
             <a href="#" class="profile">
-                <img src="images/logo.png">
+            <img src="<?php echo "../".$_SESSION['UserImg'];?>">
             </a>
         </nav>
 
