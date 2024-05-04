@@ -113,7 +113,7 @@ $row = $result->fetch_assoc();
                     <form action="./Db/Cart/AddToCart.php" method="post">
                         <input type="hidden" name="movieId" value="<?php echo $mid; ?>">
                         <input type="hidden" name="ticketPrice" value="<?php echo $row['RMovieTicketPrice']; ?>">
-                        <input type="hidden" name="userId" value="<?php echo $_SESSION['UserId'] ; ?>">
+                        <input type="hidden" name="userId" value="<?php echo $row['RMovieName'] ; ?>">
                         <input type="hidden" name="Img" value="<?php echo $row['IMG'] ; ?>">
                         <input type="number" min="1" max="20" name="NumOfTicket" placeholder="Num Of Tickets">
                         <button type="submit">Add To Cart</button>

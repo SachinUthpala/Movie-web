@@ -8,6 +8,7 @@ $sql = "SELECT * FROM `cart`";
 
 $result = $conn -> query($sql);
 
+
 ?>
 
 <!DOCTYPE html>
@@ -88,42 +89,45 @@ $result = $conn -> query($sql);
                 <div class="orders">
                     <div class="header">
                         <i class='bx bx-receipt'></i>
-                        <h3>Recent Movies</h3>
+                        <h3>Recent Cart</h3>
                         
                     </div>
                     <table>
                         <thead>
                             <tr>
-                                <th>User</th>
-                                <th>Order Date</th>
-                                <th>Status</th>
+                                <th>Movie</th>
+                                <th>Number Of Ticket</th>
+                                <th>Total Amount</th>
+                                <th>Delete</th>
+                                <th>Update</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php while($row = $result -> fetch_assoc()) {?>
                             <tr>
                                 <td>
-                                    <img src="images/profile-1.jpg">
-                                    <p>John Doe</p>
+                                    <img src="<?php echo './'.$row['Img'] ;?>">
+                                    <p><?php echo $row['UserName']; ?></p>
                                 </td>
-                                <td>14-08-2023</td>
-                                <td><span class="status completed">Completed</span></td>
-                            </tr>
-                            <tr>
+                                <td><?php echo $row['NumberOfTickets']; ?></td>
+                                <td><?php echo $row['Total']; ?></td>
                                 <td>
-                                    <img src="images/profile-1.jpg">
-                                    <p>John Doe</p>
+                                <form action="./Db/Cart/Delete.php" method="post">
+                                        <input type="hidden" name="UserIds" value="<?php echo $row['UserIds'] ;?>">
+                                        <input type="submit" value="Delete" name="delete" style="padding: 5px 10px; background-color: #EC5800;border:none;border-radius: 3px;color:#fff;">
+                                    </form>
                                 </td>
-                                <td>14-08-2023</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                            <tr>
                                 <td>
-                                    <img src="images/profile-1.jpg">
-                                    <p>John Doe</p>
+                                <form action="./Db/Cart/Update.php" method="post">
+                                    <?php $ticketPrice = intval($row['Total']) / intval($row['NumberOfTickets']); ?>
+                                        <input type="hidden" name="mid" value="<?php echo $row['UserIds'] ;?>">
+                                        <input type="hidden" name="ticketPrice" value="<?php echo $ticketPrice ;?>">
+                                        <input type="number" name="numoftickets" id="" style="width: 40px;" max="20" min="1" value="<?php echo $row['NumberOfTickets'] ;?>">
+                                        <input type="submit" value="Update" name="update" style="padding: 5px 10px; background-color: green;border:none;border-radius: 3px;color:#fff;">
+                                    </form>
                                 </td>
-                                <td>14-08-2023</td>
-                                <td><span class="status process">Processing</span></td>
                             </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
