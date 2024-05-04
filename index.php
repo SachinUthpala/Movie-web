@@ -128,9 +128,9 @@ $up_result = $conn->query($upSql);
                 <!-- box-1  -->
                 <div class="swiper-slide box">
                     <div class="box-img">
-                        <img src="<?php echo './'.$row['MovieImg']; ?>" alt="">
+                        <img src="<?php echo './'.$upRow['MovieImg']; ?>" alt="">
                     </div>
-                    <h3><?php echo $row['UMovieName']; ?></h3>
+                    <h3><?php echo $upRow['UMovieName']; ?></h3>
                 </div>
                 <?php } ?>
             </div>

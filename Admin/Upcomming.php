@@ -105,7 +105,6 @@ $result = $conn->query($sqlMovie);
                                 <th>Name</th>
                                 <th>Duration</th>
                                 <th>Type</th>
-                                <th>Ticket price</th>
                                 <th>Actress</th>
                                 <th>Delete</th>
                                 <th>Update</th>
@@ -115,28 +114,27 @@ $result = $conn->query($sqlMovie);
                             <?php while($row = $result->fetch_assoc()){ ?>
                             <tr>
                                 <td>
-                                    <img src="<?php echo '../'.$row['IMG'] ?>">
-                                    <p><?php echo $row['RMovieName'] ;?></p>
+                                    <img src="<?php echo '../'.$row['MovieImg'] ?>">
+                                    <p><?php echo $row['UMovieName'] ;?></p>
                                 </td>
-                                <td><?php echo $row['RMovieDuration']; ?></td>
-                                <td><?php echo $row['RMovieType']; ?></td>
-                                <td><?php echo $row['RMovieTicketPrice']; ?></td>
+                                <td><?php echo $row['Duration']; ?></td>
+                                <td><?php echo $row['MovieType']; ?></td>
                                 <td>
                                     <ul>
                                         <li><?php echo $row['Acttress01']; ?></li>
-                                        <li><?php echo $row['Acttress02']; ?></li>
-                                        <li><?php echo $row['Acttress03']; ?></li>
+                                        <li><?php echo $row['Attress02']; ?></li>
+                                        <li><?php echo $row['Attress03']; ?></li>
                                     </ul>
                                 </td>
                                 <td>
                                 <form action="../Db/RelisedMovie/DeleteMovie.php" method="post">
-                                        <input type="hidden" name="mid" value="<?php echo $row['RMovieId'] ;?>">
+                                        <input type="hidden" name="mid" value="<?php echo $row['UMovieId'] ;?>">
                                         <input type="submit" value="Delete" name="deleteMovie" style="padding: 5px 10px; background-color: #EC5800;border:none;border-radius: 3px;color:#fff;">
                                     </form>
                                 </td>
                                 <td>
                                 <form action="" method="post">
-                                        <input type="hidden" name="mid" value="<?php echo $row['RMovieId'] ;?>">
+                                        <input type="hidden" name="mid" value="<?php echo $row['UMovieId'] ;?>">
                                         <input type="submit" value="Update" name="deleteUser" style="padding: 5px 10px; background-color: green;border:none;border-radius: 3px;color:#fff;">
                                     </form>
                                 </td>
@@ -162,7 +160,7 @@ $result = $conn->query($sqlMovie);
             <div class="container">
                 <header>Add Movies</header>
 
-                <form action="../Db/RelisedMovie/AddMovie.php" method="post" enctype="multipart/form-data">
+                <form action="../Db/Upcomming/AddMovie.php" method="post" enctype="multipart/form-data">
                     <div class="form first">
                         <div class="details personal">
                             <span class="title">Primary Details</span>
