@@ -4,7 +4,10 @@ require_once './Db/Db.Connection.php';
 session_start();
 error_reporting(0);
 
-$sql = "SELECT * FROM `cart`";
+
+$ids = intval($_SESSION['UserId']);
+
+$sql = "SELECT * FROM `cart` WHERE userId = $ids ";
 
 $result = $conn -> query($sql);
 

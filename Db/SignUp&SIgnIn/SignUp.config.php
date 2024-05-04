@@ -16,7 +16,7 @@ if(isset($_POST['signUp'])){
 
      if($conn->query($sql)){
         echo "successfull";
-        header("Location: ../../SignIn.html");
+        header("Location: ../../SignIn.php");
      }else{
         echo "unsuccessfull";
         $_SESSION['SignUpError'] = "Error ! Try Again.";

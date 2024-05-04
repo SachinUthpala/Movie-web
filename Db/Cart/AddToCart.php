@@ -3,7 +3,7 @@
 require_once '../Db.Connection.php';
 session_start();
 
-
+    $userId = intval($_SESSION['UserId']);
     $ticketPrice = intval($_POST['ticketPrice']);
 	$UserName = $_POST['userId'];	
 	$MovieId = $_POST['movieId'];	
@@ -13,8 +13,8 @@ session_start();
 
     echo $Img;
 
-    $sql = "INSERT INTO `cart`( `UserName`, `MovieId`, `NumberOfTickets`, `Total`, `Img`) 
-    VALUES ('$UserName' , '$MovieId' , $NumberOfTickets ,  $Total , '$Img')";
+    $sql = "INSERT INTO `cart`( `userId` , `UserName`, `MovieId`, `NumberOfTickets`, `Total`, `Img`) 
+    VALUES ($userId , '$UserName' , '$MovieId' , $NumberOfTickets ,  $Total , '$Img')";
 
     $result = $conn->query($sql);
     header("Location: ../../RelisedMovies.php");
