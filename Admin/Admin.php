@@ -30,9 +30,9 @@ if(!isset($_SESSION['username'])){
         </a>
         <ul class="side-menu">
             <li class="active"><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="./CurrentMovies.html"><i class='bx bx-store-alt'></i>Relised Movies</a></li>
-            <li ><a href="./Upcomming.html"><i class='bx bx-analyse'></i>Upcomming Movies</a></li>
-            <li><a href="./UserManagement.html"><i class='bx bx-message-square-dots'></i>User Management</a></li>
+            <li><a href="./CurrentMovies.php"><i class='bx bx-store-alt'></i>Relised Movies</a></li>
+            <li ><a href="./Upcomming.php"><i class='bx bx-analyse'></i>Upcomming Movies</a></li>
+            <li><a href="./UserManagement.php"><i class='bx bx-message-square-dots'></i>User Management</a></li>
             <li><a href="#"><i class='bx bx-group'></i>Bookings</a></li>
             <li><a href="#"><i class='bx bx-group'></i>Reviews</a></li>
         </ul>

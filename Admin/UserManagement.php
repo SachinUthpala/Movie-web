@@ -40,7 +40,7 @@ $result = $conn->query($sql);
         </ul>
         <ul class="side-menu">
             <li>
-                <a href="#" class="logout">
+                <a href="./Admin.php" class="logout">
                     <i class='bx bx-log-out-circle'></i>
                     Back
                 </a>
@@ -115,14 +115,13 @@ $result = $conn->query($sql);
                                 <th>Phone</th>
                                 <th>Admin Access</th>
                                 <th>Delete</th>
-                                <th>Update</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php while($row = $result->fetch_assoc()){ ?>
                             <tr>
                                 <td>
-                                    <img src="<?php echo $row['UserImg']; ?>">
+                                    <img src="<?php echo '../'.$row['UserImg']; ?>">
                                     <p><?php echo $row['UserName']; ?></p>
                                 </td>
                                 <td><?php echo $row['UserMail']; ?></td>
@@ -130,17 +129,12 @@ $result = $conn->query($sql);
                                 <td><?php echo $row['UserPhone']; ?></td>
                                 <td><?php if($row['	IsAdmin'] == 1) { echo "Have"; } else { echo "Dont have" ;} ?></td>
                                 <td>
-                                    <form action="#" method="post">
-                                        <input type="hidden" name="userId" value="<?php echo $row['UserId '] ;?>">
+                                    <form action="../Db/User/DeleteUser.php" method="post">
+                                        <input type="hidden" name="userId" value="<?php echo $row['UserId'] ;?>">
                                         <input type="submit" value="Delete" name="deleteUser" style="padding: 5px 10px; background-color: #EC5800;border:none;border-radius: 3px;color:#fff;">
                                     </form>
                                 </td>
-                                <td>
-                                    <form action="#" method="post">
-                                        <input type="hidden" name="userId" value="<?php echo $row['UserId '] ;?>">
-                                        <input type="submit" value="Update" name="deleteUser" style="padding: 5px 10px; background-color: #00FF00;border:none;border-radius: 3px;color:#fff;">
-                                    </form>
-                                </td>
+                                
                             </tr>
 
                             <?php } ?>
@@ -185,19 +179,19 @@ $result = $conn->query($sql);
                                 
                                 <div class="input-feilds">
                                     <label>Phone</label>
-                                    <input type="text" name="contaced_peson" id="#" required>
+                                    <input type="text" name="phone" id="#" required>
                                 </div>
                                 
                                 <div class="input-feilds">
                                     <label>Admin Access</label>
-                                    <select name="" id="">
+                                    <select name="isAdmin" id="">
                                         <option value="1">Yes</option>
                                         <option value="0">No</option>
                                     </select>
                                 </div>
                                 
                                 <div class="input-feilds">
-                                    <label>Admin Access</label>
+                                    <label>Image</label>
                                     <input type="file" name="profileImg" id="">
                                 </div>
                                 
