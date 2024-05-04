@@ -127,7 +127,7 @@ $result = $conn->query($sqlMovie);
                                     </form>
                                 </td>
                                 <td>
-                                <form action="" method="post">
+                                <form action="./updateCurrent.php" method="post">
                                         <input type="hidden" name="mid" value="<?php echo $row['RMovieId'] ;?>">
                                         <input type="submit" value="Update" name="deleteUser" style="padding: 5px 10px; background-color: green;border:none;border-radius: 3px;color:#fff;">
                                     </form>

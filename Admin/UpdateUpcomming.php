@@ -2,8 +2,8 @@
 
 require_once '../Db/Db.Connection.php';
 session_start();
-
-$sqlMovie = "SELECT * FROM upcommingmovies";
+$id = intval($_POST['mid']);
+$sqlMovie = "SELECT * FROM upcommingmovies WHERE UMovieId = $id";
 $result = $conn->query($sqlMovie);
 
 ?>
@@ -29,12 +29,10 @@ $result = $conn->query($sqlMovie);
         </a>
         <ul class="side-menu">
             <li class="active"><a href="./Admin.Html"><i class='bx bxs-dashboard'></i>Upcomming Movies</a></li>
-            <li onclick="displayCurrent()"><a href="#"><i class='bx bx-store-alt'></i>Current Added Movies</a></li>
-            <li  onclick="displayAddMovie()"><a href="#"><i class='bx bx-analyse'></i>Add Movie</a></li>
         </ul>
         <ul class="side-menu">
             <li>
-                <a href="./Admin.php" class="logout">
+                <a href="./Upcomming.php" class="logout">
                     <i class='bx bx-log-out-circle'></i>
                     Back
                 </a>
@@ -42,18 +40,7 @@ $result = $conn->query($sqlMovie);
         </ul>
     </div>
     <!-- End of Sidebar -->
-    <script src="Admin.js"></script>
-    <script>
-        function displayAddMovie(){
-            document.getElementById("AddMovie").style.display = "block"
-            document.getElementById("current").style.display = "none"
-        }
-
-        function displayCurrent(){
-            document.getElementById("AddMovie").style.display = "none"
-            document.getElementById("current").style.display = "block"
-        }
-    </script>
+ 
     <!-- Main Content -->
     <div class="content">
         <!-- Navbar -->
@@ -89,72 +76,6 @@ $result = $conn->query($sqlMovie);
                 </div>
                 
             </div>
-
-         
-
-            <div class="bottom-data">
-                <div class="orders">
-                    <div class="header">
-                        <i class='bx bx-receipt'></i>
-                        <h3>Recent Movies</h3>
-                        
-                    </div>
-                    <table>
-                        <thead>
-                        <tr>
-                                <th>Name</th>
-                                <th>Duration</th>
-                                <th>Type</th>
-                                <th>Actress</th>
-                                <th>Delete</th>
-                                <th>Update</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php while($row = $result->fetch_assoc()){ ?>
-                            <tr>
-                                <td>
-                                    <img src="<?php echo '../'.$row['MovieImg'] ?>">
-                                    <p><?php echo $row['UMovieName'] ;?></p>
-                                </td>
-                                <td><?php echo $row['Duration']; ?></td>
-                                <td><?php echo $row['MovieType']; ?></td>
-                                <td>
-                                    <ul>
-                                        <li><?php echo $row['Acttress01']; ?></li>
-                                        <li><?php echo $row['Attress02']; ?></li>
-                                        <li><?php echo $row['Attress03']; ?></li>
-                                    </ul>
-                                </td>
-                                <td>
-                                <form action="../Db/RelisedMovie/DeleteMovie.php" method="post">
-                                        <input type="hidden" name="mid" value="<?php echo $row['UMovieId'] ;?>">
-                                        <input type="submit" value="Delete" name="deleteMovie" style="padding: 5px 10px; background-color: #EC5800;border:none;border-radius: 3px;color:#fff;">
-                                    </form>
-                                </td>
-                                <td>
-                                <form action="./UpdateUpcomming.php" method="post">
-                                        <input type="hidden" name="mid" value="<?php echo $row['UMovieId'] ;?>">
-                                        <input type="submit" value="Update" name="deleteUser" style="padding: 5px 10px; background-color: green;border:none;border-radius: 3px;color:#fff;">
-                                    </form>
-                                </td>
-                                
-                            </tr>
-                            
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-
-                
-
-                <!-- End of Reminders-->
-
-            </div>
-
-        </main>
-
-
 
         <main id="AddMovie"> 
             <div class="container">
