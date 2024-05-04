@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +55,7 @@
             <label for="theme-toggle" class="theme-toggle"></label>
             
             <a href="#" class="profile">
-                <img src="images/logo.png">
+                <img src="<?php echo './'.$_SESSION['UserImg']; ?>">
             </a>
         </nav>
 
