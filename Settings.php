@@ -35,9 +35,9 @@ $result = $conn -> query($sql);
             <div class="logo-name">FMFPT</div>
         </a>
         <ul class="side-menu">
-            <li class="active"><a href="./Admin.Html"><i class='bx bxs-dashboard'></i>Cart</a></li>
-            <li><a href="#"><i class='bx bx-store-alt'></i>Profile Settings</a></li>
-            <li ><a href="#"><i class='bx bx-analyse'></i>Log Out</a></li>
+            <li class="active"  onclick="displyCart()"><a href="./Admin.Html"><i class='bx bxs-dashboard'></i>Cart</a></li>
+            <li onclick="displayProfile()"><a href="#"><i class='bx bx-store-alt'></i>Profile Settings</a></li>
+            <li ><a href="./Db/logout.php"><i class='bx bx-analyse'></i>Log Out</a></li>
         </ul>
         <ul class="side-menu">
             <li>
@@ -49,6 +49,18 @@ $result = $conn -> query($sql);
         </ul>
     </div>
     <!-- End of Sidebar -->
+
+    <script>
+        function displyCart(){
+            document.getElementById('current').style.display = "block";
+            document.getElementById('UpdateUser').style.display = "none";
+        }
+
+        function displayProfile(){
+            document.getElementById('current').style.display = "none";
+            document.getElementById('UpdateUser').style.display = "block";
+        }
+    </script>
 
     <!-- Main Content -->
     <div class="content">
@@ -77,7 +89,7 @@ $result = $conn -> query($sql);
                     <h1>Profile Settings</h1>
                     <ul class="breadcrumb">
                         <li><a href="#">
-                                Relised Movies
+                                
                             </a></li>
                         /
                         <li><a href="#" class="active"> Relised Movies</a></li>
@@ -145,9 +157,9 @@ $result = $conn -> query($sql);
 
 
 
-        <main id="AddMovie"> 
+        <main id="UpdateUser"> 
             <div class="container">
-                <header>Add Movies</header>
+                <header>Update Profile</header>
 
                 <form action="../DatabaseActions/Delivery.php" method="post">
                     <div class="form first">
@@ -155,87 +167,35 @@ $result = $conn -> query($sql);
                             <span class="title">Primary Details</span>
                             <br><br>
                             <div class="feilds">
+                                
                                 <div class="input-feilds">
-                                    <label>Date</label>
-                                    <input type="date" value="" name="date" id="#" disabled>
+                                    <label>User Name</label>
+                                    <input type="text" name="name" id="#" >
                                 </div>
                                 <div class="input-feilds">
-                                    <label>Time</label>
-                                    <input type="time" value="<?php echo  $ar_created_time; ?>" name="#" id="#" disabled>
+                                    <label>User Mail</label>
+                                    <input type="email" name="mail" id="#" required>
                                 </div>
+                                
                                 <div class="input-feilds">
-                                    <label>DN Refference</label>
-                                    <input type="text" name="dn" id="#" >
+                                    <label>Phone</label>
+                                    <input type="text" name="phone" id="#" required>
                                 </div>
+
                                 <div class="input-feilds">
-                                    <label>Customer Name</label>
-                                    <input type="text" name="customer_name" id="#" required>
+                                    <label>Password</label>
+                                    <input type="text" name="password" id="#" required>
                                 </div>
+                               
                                 <div class="input-feilds">
-                                    <label>Delivery  Address</label>
-                                    <input type="text" name="delivery_address" id="#" required>
+                                    <label>Img</label>
+                                    <input type="file" name="img" id="#" required>
                                 </div>
-                                <div class="input-feilds">
-                                    <label>Contact Number</label>
-                                    <input type="text" name="contact_number" id="#" required>
-                                </div>
-                                <div class="input-feilds">
-                                    <label>Contact Person</label>
-                                    <input type="text" name="contaced_peson" id="#" required>
-                                </div>
-                                <div class="input-feilds">
-                                    <label>Type of Delivery</label>
-                                    <select name="type_of_delivery" required>
-                                    <?php while($del_type_row = $del_type->fetch(PDO::FETCH_ASSOC)){ ?>
-                                        <option value="<?php echo $del_type_row['dType'] ; ?>"><?php echo $del_type_row['dType'] ; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                                <div class="input-feilds">
-                                    <label>Delivery Person </label>
-                                    <input type="text" name="delivery_person" id="#" disabled>
-                                </div>
-                                <div class="input-feilds">
-                                    <label>Requested By</label>
-                                    <select name="requested_by" required>
-                                    <?php while($all_REQ_rows = $req_person->fetch(PDO::FETCH_ASSOC)){ ?>
-                                        <option value="<?php echo $all_REQ_rows['rName'] ; ?>"><?php echo $all_REQ_rows['rName'] ; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                                <div class="input-feilds">
-                                    <label>Vehicle Type</label>
-                                    <select name="vehicle_type" required>
-                                        <option value="Bike">Bike</option>
-                                        <option value="Lorry">Lorry</option>
-                                        <option value="Car">Car</option>
-                                        <option value="Van">Van</option>
-                                        <option value="Bus">Bus</option>
-                                        <option value="Airplane">Airplane</option>
-                                    </select>
-                                </div>
-                                <div class="input-feilds">
-                                    <label>Urgancy of deivery</label>
-                                    <select name="uragncy" required>
-                                        <option value="Sheduled">Sheduled</option>
-                                        <option value="Not Urgent">Not Urgent</option>
-                                        <option value="Urgent">Urgent</option>
-                                        <option value="Very Urgent">Very Urgent</option>
-                                    </select>
-                                </div>
-                                <div class="input-feilds">
-                                    <label>Add Remark </label>
-                                    <input type="text" name="delivery_remark" id="#" width="200px">
-                                </div>
-                                <div class="input-feilds">
-                                    <label>Expected delivery date</label>
-                                    <input type="date" value="<?php echo $ar_created_date ; ?>" name="exp_date" id="#" >
-                                </div>
-                            </div>
+                                
 
                             <div class="btns">
                                 <button type="submit" name="submit" class="nxtBtn submits">
-                                    <span class="btnText" ></span>Create Delivery</span>
+                                    <span class="btnText" ></span>Update User</span>
                                 </button>
                                 
                             </div>
