@@ -12,6 +12,10 @@ $sql = "SELECT * FROM `cart` WHERE userId = $ids ";
 $result = $conn -> query($sql);
 
 
+$sql2 = "SELECT * FROM users WHERE UserId  = $ids";
+$result2 = $conn->query($sql2);
+$row2 = $result2->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -161,7 +165,7 @@ $result = $conn -> query($sql);
             <div class="container">
                 <header>Update Profile</header>
 
-                <form action="../DatabaseActions/Delivery.php" method="post">
+                <form action="./Db/User/update.php" method="post" enctype="multipart/form-data">
                     <div class="form first">
                         <div class="details personal">
                             <span class="title">Primary Details</span>
@@ -170,27 +174,29 @@ $result = $conn -> query($sql);
                                 
                                 <div class="input-feilds">
                                     <label>User Name</label>
-                                    <input type="text" name="name" id="#" >
+                                    <input type="text" name="username" value="<?php echo $row2['UserName'] ?>" id="#" >
                                 </div>
                                 <div class="input-feilds">
                                     <label>User Mail</label>
-                                    <input type="email" name="mail" id="#" required>
+                                    <input type="email" name="email" id="#" value="<?php echo $row2['UserMail'] ?>" required>
                                 </div>
                                 
                                 <div class="input-feilds">
                                     <label>Phone</label>
-                                    <input type="text" name="phone" id="#" required>
+                                    <input type="text" name="phone" id="#" value="<?php echo $row2['UserPhone'] ?>" required>
                                 </div>
 
                                 <div class="input-feilds">
                                     <label>Password</label>
-                                    <input type="text" name="password" id="#" required>
+                                    <input type="password" name="password" id="#" value="<?php echo $row2['userPassword'] ?>" required>
                                 </div>
                                
                                 <div class="input-feilds">
                                     <label>Img</label>
-                                    <input type="file" name="img" id="#" required>
+                                    <input type="file" name="profileImg" id="#" value="<?php echo $row2['UserImg'] ?>" required>
                                 </div>
+
+                                <input type="hidden" name="ids" value="<?php echo $ids; ?>">
                                 
 
                             <div class="btns">
