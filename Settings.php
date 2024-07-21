@@ -39,7 +39,7 @@ $row2 = $result2->fetch_assoc();
             <div class="logo-name">FMFPT</div>
         </a>
         <ul class="side-menu">
-            <li class="active"  onclick="displyCart()"><a href="./Admin.Html"><i class='bx bxs-dashboard'></i>Cart</a></li>
+            <li class="active"  onclick="displyCart()"><a ><i class='bx bxs-dashboard'></i>Cart</a></li>
             <li onclick="displayProfile()"><a href="#"><i class='bx bx-store-alt'></i>Profile Settings</a></li>
             <li ><a href="./Db/logout.php"><i class='bx bx-analyse'></i>Log Out</a></li>
         </ul>

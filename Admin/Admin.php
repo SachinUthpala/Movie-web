@@ -33,8 +33,8 @@ if(!isset($_SESSION['username'])){
             <li><a href="./CurrentMovies.php"><i class='bx bx-store-alt'></i>Relised Movies</a></li>
             <li ><a href="./Upcomming.php"><i class='bx bx-analyse'></i>Upcomming Movies</a></li>
             <li><a href="./UserManagement.php"><i class='bx bx-message-square-dots'></i>User Management</a></li>
-            <li><a href="#"><i class='bx bx-group'></i>Bookings</a></li>
-            <li><a href="#"><i class='bx bx-group'></i>Reviews</a></li>
+            <!-- <li><a href="#"><i class='bx bx-group'></i>Bookings</a></li>
+            <li><a href="#"><i class='bx bx-group'></i>Reviews</a></li> -->
         </ul>
         <ul class="side-menu">
             <li>
@@ -89,17 +89,17 @@ if(!isset($_SESSION['username'])){
                     <i class='bx bx-calendar-check'></i>
                     <span class="info">
                         <h3>
-                            1,074
+                            5
                         </h3>
-                        <p>Paid Order</p>
+                        <p>Toal Movies</p>
                     </span>
                 </li>
                 <li><i class='bx bx-show-alt'></i>
                     <span class="info">
                         <h3>
-                            3,944
+                            4
                         </h3>
-                        <p>Site Visit</p>
+                        <p>Total Users</p>
                     </span>
                 </li>
                 <li><i class='bx bx-line-chart'></i>
@@ -121,7 +121,7 @@ if(!isset($_SESSION['username'])){
             </ul>
             <!-- End of Insights -->
 
-            <div class="bottom-data">
+            <!-- <div class="bottom-data">
                 <div class="orders">
                     <div class="header">
                         <i class='bx bx-receipt'></i>
@@ -163,7 +163,7 @@ if(!isset($_SESSION['username'])){
                             </tr>
                         </tbody>
                     </table>
-                </div>
+                </div> -->
 
                 
 

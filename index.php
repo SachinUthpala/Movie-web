@@ -34,7 +34,7 @@ $up_result = $conn->query($upSql);
     <!-- Navbar  -->
     <header>
         <a href="#home" class="logo">
-            <i class='bx bxs-movie'></i>M Booking
+            <i class='bx bxs-movie'></i>M FMFTP
         </a>
         <div class="bx bx-menu" id="menu-icon"></div>
 
