@@ -23,7 +23,7 @@ $up_result = $conn->query($upSql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M Booking</title>
+    <title>M Movies</title>
     <link rel="stylesheet" href="./Asserts/Styles/style.css">
     <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -32,23 +32,7 @@ $up_result = $conn->query($upSql);
 </head>
 <body>
     <!-- Navbar  -->
-    <header>
-        <a href="#home" class="logo">
-            <i class='bx bxs-movie'></i>M FMFTP
-        </a>
-        <div class="bx bx-menu" id="menu-icon"></div>
-
-        <!-- menu  -->
-        <ul class="navbar">
-            <li><a href="#home" class="home-active">Home</a></li>
-            <li><a href="./RelisedMovies.php">Relised Movies</a></li>
-            <li><a href="./Upcomming.php">UpComing Movies</a></li>
-            <li><a href="#newsletter">Contact Us</a></li>
-            <li style="<?php if( $_SESSION['adminAccess'] ==1){echo 'display:block';}else{echo 'display:none';} ?>"><a href="./Admin/Admin.php">Admin</a></li>
-        </ul>
-        <a href="./SignUp.php" style="<?php if($_SESSION['username'] != null){echo "display:none;";}else{echo "display:block";} ?>" class="btn">Sign In</a>
-        <img src="<?php echo './'.$_SESSION['UserImg']; ?>" alt="" style="width:50px ;height:50px;border-radius:100%;cursor:pointer;<?php if($_SESSION['username'] != null){echo "display:block;";}else{echo "display:none";} ?>" onclick="location.href='Settings.php'">
-    </header>
+    <?php require('./Components/Header.Php'); ?>
 
     <!-- Home  -->
     <section class="home swiper" id="home" >
@@ -142,7 +126,7 @@ $up_result = $conn->query($upSql);
     <!-- footer  -->
     <section class="footer">
         <a href="" class="logo">
-            <i class="bx bxs-movie"></i>M Booking
+            <i class="bx bxs-movie"></i>M Movies
         </a>
         <div class="social2">
             <h3>Quick Links</h3>
